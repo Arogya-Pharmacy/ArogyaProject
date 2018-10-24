@@ -4,7 +4,17 @@ public class OrderPojo {
 private int productSubcatId;
 private String productSubcatName;
 private int productSubcatQuantity;
-private int productSubcatCost;
+private float productSubcatCost;
+private String image;
+
+
+
+public String getImage() {
+	return image;
+}
+public void setImage(String image) {
+	this.image = image;
+}
 public int getProductSubcatId() {
 	return productSubcatId;
 }
@@ -23,10 +33,10 @@ public int getProductSubcatQuantity() {
 public void setProductSubcatQuantity(int productSubcatQuantity) {
 	this.productSubcatQuantity = productSubcatQuantity;
 }
-public int getProductSubcatCost() {
+public float getProductSubcatCost() {
 	return productSubcatCost;
 }
-public void setProductSubcatCost(int productSubcatCost) {
+public void setProductSubcatCost(float productSubcatCost) {
 	this.productSubcatCost = productSubcatCost;
 }
 

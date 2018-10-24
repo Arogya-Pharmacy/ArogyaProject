@@ -92,6 +92,42 @@ public class FetchArogyaDetails {
 		}
 		return rowsAffected;
 	}
+	public List<OrderPojo> FetchSubCat(){
+		System.out.println("AT AUB CATEGORY PAGE");
+		ArrayList<OrderPojo> al=new ArrayList<>();
+		try{
+		GetCon dbConnection = new GetCon();
+		Connection con = dbConnection.getCon();
+	
+		if (con == null) {
+			System.out.println("Not Connected,Please check your db connection");
+		} else {
+			String query = "select product_subcat_id,product_subcat_name,images,product_subcat_cost from productsubcategory where product_cat_id=1";
+			
+			try {
+				PreparedStatement psmt = con.prepareStatement(query);
+				ResultSet resultset = psmt.executeQuery();
+				while(resultset.next()){
+					OrderPojo op=new OrderPojo();
+					op.setProductSubcatId(resultset.getInt(1));
+					op.setProductSubcatName(resultset.getString(2));
+					op.setImage(resultset.getString(3));
+					op.setProductSubcatCost(resultset.getFloat(4));
+					System.out.println(resultset.getFloat(4));
+				al.add(op);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}catch(Exception e){
+		System.out.println(e);
 	}
+		return al;
+	}
+	}
+
+
 
 
