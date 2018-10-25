@@ -69,11 +69,11 @@ public class LoginServlet extends HttpServlet {
 					if(type == 1){
 						
 					
-					 RequestDispatcher rd=request.getRequestDispatcher("userhome.jsp");  
+					 RequestDispatcher rd=request.getRequestDispatcher("category.jsp");  
 				     rd.forward(request,response);  
 					}
 					else{
-						RequestDispatcher rd=request.getRequestDispatcher("arogyaEmpLogin.jsp");  
+						RequestDispatcher rd=request.getRequestDispatcher("arogyaEmpHome.jsp");  
 					     rd.forward(request,response);  
 					}
 				}

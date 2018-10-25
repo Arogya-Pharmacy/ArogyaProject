@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AROGYA PHARMACY</title>
 </head>
-<body style="background-image:url(C:\Users\SrinivasaReddy.k\Pictures\img\arogya.jpg)">
+<body style="background-image:url(images/arogya.jpg) no-repeat center fixed ;background-size:cover;">
 <nav class="navbar   navbar-dark danger-color">
   <div class="container-fluid">
     <div class="navbar" >
@@ -29,7 +29,7 @@
     
   </div>
 </nav>
-           <img src='C:\Users\SrinivasaReddy.k\Pictures\img\health.jpeg' class="img-rounded" style='width:70%;height:70%' alt='[]' />
+           <img src='images/ayur.jpg' class="img-rounded" style='width:70%;height:70%' alt='[]' />
        
 
 </body>
