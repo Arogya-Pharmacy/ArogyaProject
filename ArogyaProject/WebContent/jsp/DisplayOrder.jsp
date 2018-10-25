@@ -7,18 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+System.out.println("SESSION SERVLET CALLED");
+int id=Integer.parseInt(request.getParameter("id"));
+/* int qun=Integer.parseInt(request.getParameter("quantity")); */
+String productName=request.getParameter("ProductName");  
+int price=Integer.parseInt(request.getParameter("price"));
+/* int quantity=Integer.parseInt(request.getParameter("quantity")); */
+/* price*=quantity; */
+System.out.println("ProductName "+productName+" Price "+price);
+%>  
+ <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 <table>
 <tr>
 <td>
-${productName}
-</td>
-<td>
-${quantity}
+HELLO WORLD
 </td>
 <td>
 ${price }
-</td>
+</td> 
 </tr>
 </table>
+</div>
 </body>
 </html>
