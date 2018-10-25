@@ -9,28 +9,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body style="background:url(images/emplogin.JPG) no-repeat center fixed;background-size:cover;">
+<body style="background:url(empll.jpg) no-repeat center fixed;background-size:cover;">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Welcome to Arogya Pharmacy</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="Home.jsp">Home</a></li>
+      <li class="active"><a href="home1.jsp">Home</a></li>
    
-      <li><a href="#">ABOUT US</a></li>
-      <li><a href="#">CONTACT US</a></li>
+      
+      <li><a href="contactus.html">CONTACT US</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="row">
     <div class="col-sm-4" >
-    <h1 style="color=green">WELCOME TO EMPLOYEE LOGIN</h1>
+    <h1 style="color:white">WELCOME TO EMPLOYEE LOGIN</h1>
     </div>
  
  
- <form action="EmpLogin" method="get">
+ <form action="LoginServlet" method="get">
  <div class="row">
     <div class="col-sm-6" >
     
