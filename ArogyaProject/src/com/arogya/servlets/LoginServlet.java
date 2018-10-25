@@ -50,14 +50,16 @@ public class LoginServlet extends HttpServlet {
 			try{
 			 String username=request.getParameter("uname");
 			 String password=request.getParameter("psw");
-				HttpSession httpsession=request.getSession();
-				httpsession.setAttribute("username", username);
+			
+				
 			LoginEntity bean = new LoginEntity();
 				
 		  		bean.setUsername(username);
 				bean.setPassword(password);
 			Login login = new Login();
-				
+				int id=login.getId(username);
+				HttpSession httpsession=request.getSession();
+				httpsession.setAttribute("id", id);
 			int type  =	login.getType(username);
 		
 		       boolean b= login.validation(bean);

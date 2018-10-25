@@ -28,7 +28,7 @@
  <div class="row">
     <div class="col-sm-6" >
     <h1 style="color=green">WELCOME TO Login</h1>
-    <img src=""  class="img-rounded" style='width:70%;height:70%' alt='[]'>
+    <img src="images/download.png"  class="img-rounded" style='width:70%;height:70%' alt='[]'>
     </div>
  
  <div class="row">
