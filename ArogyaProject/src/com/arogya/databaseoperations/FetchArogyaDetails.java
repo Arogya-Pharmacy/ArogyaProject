@@ -103,7 +103,7 @@ public class FetchArogyaDetails {
 		return rowsAffected;
 	}
 
-	public List<OrderPojo> FetchSubCat() {
+	public List<OrderPojo> FetchSubCat(int catId) {
 		System.out.println("AT AUB CATEGORY PAGE");
 		ArrayList<OrderPojo> al = new ArrayList<>();
 		try {

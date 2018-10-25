@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+  function onSubmit(){
+	  alert("Your order got placed,Your order code :: "+randomNumber);
+  }</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -48,6 +52,7 @@ session.setAttribute("randomNumber",randomNumber);
       <li><a href="login.jsp"><span></span> Login</a></li>
     </ul>
     </nav>
+
     <c:url value="/DataInSession" var="url"/>
 <form action="${url}" method="post">
  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -64,7 +69,7 @@ ${price}
 </td> 
 </tr>
 </table>
-<input type="submit" value="Order" name="order"/>
+<a href="../DataInSession" class="btn btn-info" onclick="onSubmit()">Order</a>
 </div>
 </form>
 </body>
