@@ -7,9 +7,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.arogya.connection.GetCon;
 import com.arogya.model.ConnectionProvider;
 import com.arogya.model.OrderPojo;
+
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class FetchArogyaDetails {
 
@@ -84,7 +88,8 @@ public class FetchArogyaDetails {
 		if (con == null) {
 			System.out.println("Not Connected,Please check your db connection");
 		} else {
-			String query = "update customerorder set customer_order_code='" + orderCode + "' where customer_id=1";
+			
+			String query = "update customerorder set customer_order_code='" + orderCode + "' where email='rohini@gmail.com'";
 			try {
 				PreparedStatement psmt = con.prepareStatement(query);
 				ResultSet result = psmt.executeQuery();
@@ -98,7 +103,7 @@ public class FetchArogyaDetails {
 		return rowsAffected;
 	}
 
-	public List<OrderPojo> FetchSubCat() {
+	public List<OrderPojo> FetchSubCat(int catId) {
 		System.out.println("AT AUB CATEGORY PAGE");
 		ArrayList<OrderPojo> al = new ArrayList<>();
 		try {
