@@ -113,7 +113,7 @@ public class FetchArogyaDetails {
 			if (con == null) {
 				System.out.println("Not Connected,Please check your db connection");
 			} else {
-				String query = "select product_subcat_id,product_subcat_name,images,product_subcat_cost from productsubcategory where product_cat_id=1";
+				String query = "select product_subcat_id,product_subcat_name,images,product_subcat_cost from productsubcategory where product_cat_id="+catId;
 				System.out.println(query);
 				try {
 					PreparedStatement psmt = con.prepareStatement(query);
