@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <Script>
+  function onSubmit()
+  {
+	 
+  }
+  </Script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,6 +35,7 @@
     </ul>
     </nav>
     <center>
+
   <div class="container">
   <div class="column">
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -37,23 +44,24 @@
 
  <c:forEach items="${ProductsList}" var="list">
  <td>
- 
-  <img src="${list.getImage()}" height="250" width="250"/>
-  <label>Product Name  :  ${list.getProductSubcatName() }</label>
-   <label>Quantity :<input type="text" name="quantity" id="quantity"/></label><br> 
-   <label>Price : ${list.getProductSubcatCost()}</label><br>
-   <input type="submit" name="addCart" value="Add To Cart"/><br>
-       </td>
-    </c:forEach>
 
+  <img src="${list.getImage()}" height="250" width="250"/>
+  <label name="ProductName" id="ProductName">Product Name  :  ${list.getProductSubcatName() }</label>
+   <label>Quantity :<input type="text" name="quantity" id="quantity"/></label><br> 
+   <label>Price : Rs.</label><label id="price" name="price"> ${list.productSubcatCost} </label>/-<br>
+   <a href="DataInSession?id=${list.productSubcatId}&pname=${list.productSubcatName}&quant=${quantity}&price=${list.productSubcatCost}" class="btn btn-info">Buy Now</a>
+   <%-- <input type="submit" name="addToCart" id="${list.productSubcatId}" value="Buy Now" onclick="onSubmit()"/><br> --%>
+   </td>
+    </c:forEach>
   </tr>
   </table>
     </div>
   </div>
   </div>
+
 </center>
   </div>
-
+<h2>${quantity}</h2>
 </body>
 </html>
 
