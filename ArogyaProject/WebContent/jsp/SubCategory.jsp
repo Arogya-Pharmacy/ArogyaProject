@@ -40,11 +40,11 @@
  <td>
 
   <img src="${list.getImage()}" height="250" width="250"/>
-  <label name="ProductName" id="ProductName">Product Name  :  ${list.getProductSubcatName() }</label>
+  <label>Product Name  : </label>
+  <label name="ProductName" id="ProductName"> ${list.productSubcatName }</label>
    <label>Quantity :<input type="text" name="quantity" id="quantity"/></label><br> 
    <label>Price : Rs.</label><label id="price" name="price"> ${list.productSubcatCost} </label>/-<br>
-    <!-- <a href="/DataInSession?" class="btn btn-info">Buy Now</a> -->
-  <a href="jsp/DisplayOrder.jsp?id=${list.productSubcatId}&ProductName=${list.productSubcatName}&price=${list.productSubcatCost}&quantity=4" class="btn btn-info">Buy Now</a>
+  <a href="jsp/DisplayOrder.jsp?id=${list.productSubcatId}&pname=${list.productSubcatName}&quantity=4&price=${list.productSubcatCost }" class="btn btn-info">Buy Now</a>
    <%-- <input type="submit" name="addToCart" id="${list.productSubcatId}" value="Buy Now" onclick="onSubmit()"/><br> --%>
    </td>
     </c:forEach>

@@ -11,23 +11,35 @@
 System.out.println("SESSION SERVLET CALLED");
 int id=Integer.parseInt(request.getParameter("id"));
 /* int qun=Integer.parseInt(request.getParameter("quantity")); */
-String productName=request.getParameter("ProductName");  
-int price=Integer.parseInt(request.getParameter("price"));
-/* int quantity=Integer.parseInt(request.getParameter("quantity")); */
-/* price*=quantity; */
-System.out.println("ProductName "+productName+" Price "+price);
+String productName=request.getParameter("pname"); 
+System.out.println("product name ");
+int quantity=Integer.parseInt(request.getParameter("quantity"));
+int pri=Integer.parseInt(request.getParameter("price"));
+
+pri*=quantity; 
+pageContext.setAttribute("price", pri);
+pageContext.setAttribute("quant", quantity);
+pageContext.setAttribute("prodName", productName);
+ 
+System.out.println("ProductName "+productName+" Price "+pri);
 %>  
+<form action="">
  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-<table>
+<table border="1">
 <tr>
 <td>
-HELLO WORLD
+${prodName}
 </td>
 <td>
-${price }
+${quant}
+</td>
+<td>
+${price}
 </td> 
 </tr>
 </table>
+<input type="submit" value="Order" name="order"/>
 </div>
+</form>
 </body>
 </html>
