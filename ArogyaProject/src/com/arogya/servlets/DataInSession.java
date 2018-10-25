@@ -41,12 +41,10 @@ public class DataInSession extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 HttpSession session=request.getSession(false);
 		System.out.println("We are in DoPost of DataInSession ");
-
+		 HttpSession session=request.getSession(false);
 		  String code=(String) session.getAttribute("randomNumber"); 
-
-			 System.out.println("code in SaveOrderDetails " +code);
+		System.out.println("code in SaveOrderDetails " +code);
 		 String n=(String) session.getAttribute("username");  
 		 FetchArogyaDetails quantityOrder=new FetchArogyaDetails();
 		int insertStatus=(int) quantityOrder.InsertOrderCode(code);	

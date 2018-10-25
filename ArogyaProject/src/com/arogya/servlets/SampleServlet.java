@@ -32,8 +32,9 @@ public class SampleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int catId=Integer.parseInt(request.getParameter("catId"));
 		FetchArogyaDetails quantityOrder=new FetchArogyaDetails();
-		List<OrderPojo> price=quantityOrder.FetchSubCat();		
+		List<OrderPojo> price=quantityOrder.FetchSubCat(catId);		
 		request.setAttribute("ProductsList", price);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/SubCategory.jsp");
 		rd.forward(request, response);
