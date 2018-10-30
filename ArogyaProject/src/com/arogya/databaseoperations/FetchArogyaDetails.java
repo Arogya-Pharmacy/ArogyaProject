@@ -17,14 +17,14 @@ import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class FetchArogyaDetails {
 
-	public int FetchArogyaDetailsCon() {
+	public int FetchArogyaDetailsCon(int subCatId,int quantity) {
 		GetCon databaseconnection = new GetCon();
 		Connection con = databaseconnection.getCon();
 		int count = 0;
 		if (con == null) {
 			System.out.println("Not Connected,Please check your db connection");
 		} else {
-			String query = "select product_subcat_quantity from productsubcategory where product_subcat_name='paracetamol' and product_subcat_quantity<50";
+			String query = "select product_subcat_quantity from productsubcategory where product_subcat_id="+subCatId+" and product_subcat_quantity>="+quantity;
 			try {
 				PreparedStatement psmt = con.prepareStatement(query);
 				ResultSet result = psmt.executeQuery();
@@ -80,7 +80,7 @@ public class FetchArogyaDetails {
 		return price;
 	}
 
-	public int InsertOrderCode(String orderCode) {
+	public int InsertOrderCode(String orderCode,int quantity,int subCatId) {
 		System.out.println("INSERT data in to customer order table ");
 		GetCon databaseconnection = new GetCon();
 		Connection con = databaseconnection.getCon();
@@ -88,12 +88,12 @@ public class FetchArogyaDetails {
 		if (con == null) {
 			System.out.println("Not Connected,Please check your db connection");
 		} else {
-			
-			String query = "update customerorder set customer_order_code='" + orderCode + "' where email='rohini@gmail.com'";
+			String query="insert into customerorder values("+subCatId+",8,"+quantity+",'"+orderCode+"')";
+//			String query = "update customerorder set customer_order_code='" + orderCode + "' where email='rohini@gmail.com'";
 			try {
 				PreparedStatement psmt = con.prepareStatement(query);
-				ResultSet result = psmt.executeQuery();
-				while (result.next()) {
+				int result = psmt.executeUpdate();
+				if (result==1) {
 					rowsAffected = 1;
 				}
 			} catch (Exception e) {
@@ -138,5 +138,41 @@ public class FetchArogyaDetails {
 			System.out.println(e);
 		}
 		return al;
+	}
+	
+	public int UpdateQuantityInTable(int subCatId,int quantity){
+		System.out.println("INSERT data in to customer order table ");
+		GetCon databaseconnection = new GetCon();
+		Connection con = databaseconnection.getCon();
+		int rowsAffected = 0;
+		if (con == null) {
+			System.out.println("Not Connected,Please check your db connection");
+		} else {
+			String retrieve="select product_subcat_quantity from productsubcategory where product_subcat_id="+subCatId;
+			try{
+				PreparedStatement psmt1 = con.prepareStatement(retrieve);
+				ResultSet result1 = psmt1.executeQuery();
+				int totalQuant=0;
+				while(result1.next()){
+					totalQuant=result1.getInt(1)-quantity;
+					if(totalQuant>0){
+						String query="update productsubcategory set product_subcat_quantity="+totalQuant+" where product_subcat_id="+subCatId;
+						try {
+							PreparedStatement psmt = con.prepareStatement(query);
+							int result = psmt.executeUpdate();
+							if (result==1) {
+								rowsAffected = 1;
+							}
+						} catch (Exception e) {
+							System.out.println(e);
+						}
+
+					}
+				}
+			}catch(Exception e){
+				System.out.println(e);
+			}
+					}
+		return rowsAffected;
 	}
 }

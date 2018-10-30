@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <nav class="navbar   navbar-dark danger-color">
   <div class="container-fluid">
     <div class="navbar" >
@@ -19,15 +20,13 @@
     </div>
     <p class="navbar-text" background-color="red">WELCOME TO AROGYA</p>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="Home.jsp">Home</a></li>
-      <li><a href="#">ABOUT US</a></li>
+      <li class="active"><a href="home1.jsp">Home</a></li>
+     
       <li><a href="contactus.html">CONTACT US</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="signup.jsp"><span ></span> Sign Up</a></li>
-      <li><a href="login.jsp"><span></span> Login</a></li>
+
     </ul>
     </nav>
+   
     <center>
 
   <div class="container">
@@ -36,27 +35,57 @@
      <table>
  <tr>
 
+
+<%!
+ public void addToCart(HttpSession sessionObject,HttpServletRequest request) {
+	int pid = Integer.parseInt(request.getParameter("prodSubcatId"));
+	String pname =request.getParameter("ProductName");
+	int quantity = Integer.parseInt(request.getParameter("quantity"));
+	int price = Integer.parseInt(request.getParameter("price"));
+	sessionObject.setAttribute("pid", pid);
+	sessionObject.setAttribute("pname", pname);
+	sessionObject.setAttribute("quantity", quantity);
+	sessionObject.setAttribute("price", price);
+	
+	
+  
+} 
+
+ %>
+
  <c:forEach items="${ProductsList}" var="list">
  <td>
-
+	<input type="hidden" name="prodSubcatId" value="${list.productSubcatId}"/>
   <img src="${list.getImage()}" height="250" width="250"/>
   <label>Product Name  : </label>
   <label name="ProductName" id="ProductName"> ${list.productSubcatName }</label>
-   <label>Quantity :<input type="text" name="quantity" id="quantity"/></label><br> 
+   <label>Quantity :<input type="text" name="quantity" id="quantity" /></label><br>
+  <%--  <%request.setParameter("quantity")%> --%> 
    <label>Price : Rs.</label><label id="price" name="price"> ${list.productSubcatCost} </label>/-<br>
-  <a href="jsp/DisplayOrder.jsp?id=${list.productSubcatId}&pname=${list.productSubcatName}&quantity=4&price=${list.productSubcatCost }" class="btn btn-info">Buy Now</a>
+   <!--  <form action="Getdetails">
+   <button type="submit">Buynow</button>
+   </form> -->
+<!-- <a href="" class="btn btn-info">Buy Now</a> --> 
+   <%-- <input type="button" id="addtocart" onclick="addToCart(<%=request.getSession()%>,<%=request.getContextPath()%>)" value="Add to cart"/> --%>
+   
+   
+   <a href="jsp/DisplayOrder.jsp?id=${list.productSubcatId}&pname=${list.productSubcatName}&quantity=1&price=${list.productSubcatCost }" class="btn btn-info">Buy Now</a>
    <%-- <input type="submit" name="addToCart" id="${list.productSubcatId}" value="Buy Now" onclick="onSubmit()"/><br> --%>
    </td>
     </c:forEach>
   </tr>
   </table>
+  <!-- <form action="jsp/DisplayOrder.jsp">
+  <input type="submit" value="Submit">
+  </form> -->
     </div>
   </div>
   </div>
 
 </center>
+
   </div>
-<h2>${quantity}</h2>
+
 </body>
 </html>
 

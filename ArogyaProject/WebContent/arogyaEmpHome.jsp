@@ -10,12 +10,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background:url(images/empimage.jpg) no-repeat center fixed;background-size:cover;">
-<%
+<%--  <%
  	response.setHeader("Cache-Control" , "no-cache, no-store, must-revalidate");  
 	if(session.getAttribute("username")==null){
-		response.sendRedirect("arogyaEmpLogin.jsp");
+		response.sendRedirect("login.jsp");
 	}
-%>
+%> --%> 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">

@@ -10,31 +10,44 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script type="text/javascript">
-  function onSubmit(){
-	  alert("Your order got placed,Your order code :: "+randomNumber);
+  function onSubmit(rand){
+	  alert("Your order got placed,Your order code :: "+rand);
   }</script>
 <title>Insert title here</title>
 </head>
 <body>
 <%
-System.out.println("CURSOR AT DISPLAY ORDER ");
+ System.out.println("CURSOR AT DISPLAY ORDER ");
 int id=Integer.parseInt(request.getParameter("id"));
-/* int qun=Integer.parseInt(request.getParameter("quantity")); */
-String productName=request.getParameter("pname"); 
+ int qun=Integer.parseInt(request.getParameter("quantity")); 
+ String productName=request.getParameter("pname"); 
 System.out.println("product name ");
 int quantity=Integer.parseInt(request.getParameter("quantity"));
 int pri=Integer.parseInt(request.getParameter("price"));
 pri*=quantity; 
+pageContext.setAttribute("subCatId", id);
 pageContext.setAttribute("price", pri);
 pageContext.setAttribute("quant", quantity);
 pageContext.setAttribute("prodName", productName);
-System.out.println("ProductName "+productName+" Price "+pri);
+System.out.println("ProductName "+productName+" Price "+pri+" quantity "+quantity); 
 Random r=null;
 String randomNumber =null;
 r = new Random();
 randomNumber = String.format("%04d", Integer.valueOf(r.nextInt(1001)));
 System.out.println("random code is "+randomNumber);
-session.setAttribute("randomNumber",randomNumber);  
+pageContext.setAttribute("randNumber", randomNumber); 
+HttpSession session1=request.getSession(false);
+session1.setAttribute("randomCode", randomNumber); 
+session1.setAttribute("SubCatId",id);;
+session1.setAttribute("quantity", qun);
+session1.setAttribute("price", pri);
+session1.setAttribute("prodName", productName);
+session1.setAttribute("code", randomNumber);
+/* int subCatId=(int)request.getAttribute("SubCatId");
+String prodName=(String)request.getAttribute("productName");
+int price=(int) request.getAttribute("pri");
+int quant=(int) request.getAttribute("quantity");
+ System.out.println("subcatId "+subCatId+" prodName "+prodName+" price "+price+" quant "+quant);  */
 %>  
 <nav class="navbar   navbar-dark danger-color">
   <div class="container-fluid">
@@ -59,6 +72,17 @@ session.setAttribute("randomNumber",randomNumber);
 <table border="1">
 <tr>
 <td>
+Product Name
+</td>
+<td>
+Quantity
+</td>
+<td>
+Price
+</td> 
+</tr>
+<tr>
+<td>
 ${prodName}
 </td>
 <td>
@@ -69,7 +93,8 @@ ${price}
 </td> 
 </tr>
 </table>
-<a href="../DataInSession" class="btn btn-info" onclick="onSubmit()">Order</a>
+<input type="submit" name="BuyNow" value="BuyNow" onclick="onSubmit(randomNumber)"/>
+<%-- <a href="../DataInSession?code=${randNumber}&subCatId=${subCatId}&quantity=${quant}" class="btn btn-info" >Order</a> --%>
 </div>
 </form>
 </body>

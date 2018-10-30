@@ -33,6 +33,8 @@ public class DataInSession extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -41,16 +43,32 @@ public class DataInSession extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("We are in DoPost of DataInSession ");
+		
+		PrintWriter out=response.getWriter();
+		out.println("We are in DoPost of DataInSession");
 		 HttpSession session=request.getSession(false);
-		  String code=(String) session.getAttribute("randomNumber"); 
-		System.out.println("code in SaveOrderDetails " +code);
+		 
+		  String code=(String) session.getAttribute("code"); 
+		  out.println("Random code is Data In Session "+code);
+		  int quant= (Integer)session.getAttribute("quantity");
+		  out.println("Random code is Data In Session "+quant);
+		  int subCatId=(Integer)session.getAttribute("SubCatId");
+		  out.println("Random code is Data In Session "+subCatId);
+		out.println("code in SaveOrderDetails " +code+" quantity "+quant+" subcatId "+subCatId);
 		 String n=(String) session.getAttribute("username");  
 		 FetchArogyaDetails quantityOrder=new FetchArogyaDetails();
-		int insertStatus=(int) quantityOrder.InsertOrderCode(code);	
-		 System.out.println("Record inserted in table successfully"+insertStatus);
-		doGet(request, response);
-		doGet(request, response);
+		 int valueQuantity=(int) quantityOrder.FetchArogyaDetailsCon(subCatId,quant);
+		 System.out.println("data from fetchArogya after checking "+valueQuantity);
+		 if(valueQuantity>0){
+			 
+			 int insertStatus=(int) quantityOrder.InsertOrderCode(code,quant,subCatId);	
+			 System.out.println("Record inserted in table successfully"+insertStatus);
+			 int updateQuant=(int) quantityOrder.UpdateQuantityInTable(subCatId,quant);
+			 System.out.println("Rows Affected after updating data "+updateQuant);
+			 doGet(request, response);
+		 }else{
+			 System.out.println("sorry for the inconvinience,we are low with products");
+		 }
 	}
 
 }
