@@ -24,8 +24,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
    
-      <li><a href="#">ABOUT US</a></li>
-      <li><a href="#">CONTACT US</a></li>
+  
+      <li><a href="contactus.html">CONTACT US</a></li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
      

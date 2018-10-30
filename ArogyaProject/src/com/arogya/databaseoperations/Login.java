@@ -34,7 +34,7 @@ public class Login {
 		    	 if(rs.next())
 		        {
 		    		 
-		
+	             
 		        return true;
 		         } 
 		    	 else{
@@ -88,4 +88,30 @@ public class Login {
 			return 0;
 			
 }
+	public int getId(String username) throws SQLException{
+		
+		GetCon databaseconnection =new GetCon();
+		  Connection con=databaseconnection.getCon();
+		  int i=0;
+		  if(con==null)
+		  {
+			  System.out.println("Not connected, please check the connection");
+
+		  }
+		  else{
+			PreparedStatement  pstmt= con.prepareStatement("select reg_id from registration where email=? ");
+		
+	        pstmt.setString(1,username);
+	        ResultSet rs= pstmt.executeQuery();
+	        while(rs.next()){
+	        	i=rs.getInt(1);
+	        	
+		  }  
+	        return i;
+		
+		
 	}
+	
+		  return 0;
+	}
+}

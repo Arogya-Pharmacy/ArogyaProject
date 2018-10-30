@@ -20,14 +20,14 @@
     </div>
     <p class="navbar-text" background-color="red">WELCOME TO AROGYA</p>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="Home.jsp">Home</a></li>
+      <li class="active"><a href="home1.jsp">Home</a></li>
       
-      <li><a href="#">ABOUT US</a></li>
+      
       <li><a href="contactus.html">CONTACT US</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
      
-      <li><a href="Home.jsp"><span></span>Logout</a></li>
+      <li><a href="logout.jsp"><span></span>Logout</a></li>
     </ul>
     
   </div>
